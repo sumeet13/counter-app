@@ -5,16 +5,23 @@ class Counters extends Component {
   state = {
     counters: [
       { id: 1, value: 0 },
-      { id: 2, value: 10 },
+      { id: 2, value: 0 },
       { id: 3, value: 0 },
       { id: 4, value: 0 },
     ],
+  };
+  handleDelete = (counterId) => {
+    console.log("Event handler called", counterId);
   };
   render() {
     return (
       <div>
         {this.state.counters.map((c) => (
-          <Counter key={c.id} value={c.value} selected={true} />
+          <Counter
+            key={c.id}
+            onDelete={this.handleDelete}
+            value={c.value}
+          ></Counter>
         ))}
       </div>
     );
